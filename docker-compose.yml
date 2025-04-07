@@ -2,24 +2,38 @@ version: "3.9"
 
 services:
   app:
-    build: ./app
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    build: ./core
+    command: uvicorn core.main:app --host 0.0.0.0 --port 8000
     volumes:
-      - ./app:/app
-      - ./tests:/tests
       - ./data:/app/data
     ports:
       - "8000:8000"
     environment:
       - DATABASE_URL=/app/data/flight.db
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=phi3
+    depends_on:
+      - ollama
+          
 
-  test:
-    build: ./app
-    command: pytest /tests
+  ollama:
+    image: ollama/ollama:0.5.7
+    container_name: ollama
     volumes:
-      - ./app:/app
-      - ./tests:/tests
-      - ./data:/app/db  
+      - ollama:/root/.ollama
+      - ./ollama_server/start.sh:/ollama_entrypoint.sh
+    ports:
+      - "11434:11434"
     environment:
-      - DATABASE_URL=/app/data/flight.db
+      - LLM_MODEL_VERSION=phi3
+    entrypoint: [ "/bin/bash", "/ollama_entrypoint.sh" ]
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:11434 || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
+
+      
+volumes:
+  ollama:

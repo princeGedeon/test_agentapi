@@ -32,6 +32,8 @@ def send_customers(api_url: str = Query(default=None, description="URL API exter
             raise HTTPException(status_code=400, detail="Base de données introuvable.")
 
         customers, purchases = fetch_data_from_sqlite(db_path)
+        print(customers)
+        print(purchases)
 
         payload = {
             "customers": customers,
