@@ -1,6 +1,7 @@
 import os
 from langchain_community.utilities import SQLDatabase
 from langchain_community.agent_toolkits import create_sql_agent
+from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain.agents import AgentType
 from langchain_ollama import OllamaLLM
 
@@ -17,8 +18,10 @@ def load_llm():
     llm = OllamaLLM(
         model=model_name,
         base_url=base_url,
-        temperature=0.3,
+        temperature=0.1,
     )
+
+
     print(f"Modèle chargé : {model_name} avec Ollama")
     return llm
 
@@ -28,8 +31,10 @@ def create_agent_executor():
 
     agent = create_sql_agent(
         llm=llm,
-        db=db,
+
+        toolkit=SQLDatabaseToolkit(db=db, llm=llm),
         agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=True,
+        handle_parsing_errors=True
     )
     return agent
