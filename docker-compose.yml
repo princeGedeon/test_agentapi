@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  app:
+    build: ./app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - ./app:/app
+      - ./tests:/tests
+      - ./data:/app/data
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=/app/data/flight.db
+
+  test:
+    build: ./app
+    command: pytest /tests
+    volumes:
+      - ./app:/app
+      - ./tests:/tests
+      - ./data:/app/db  
+    environment:
+      - DATABASE_URL=/app/data/flight.db
+

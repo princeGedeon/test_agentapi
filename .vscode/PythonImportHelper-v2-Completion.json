@@ -1,0 +1,399 @@
+[
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "REQUIRED_CUSTOMER_COLUMNS",
+        "importPath": "core.utils.constants",
+        "description": "core.utils.constants",
+        "isExtraImport": true,
+        "detail": "core.utils.constants",
+        "documentation": {}
+    },
+    {
+        "label": "REQUIRED_PURCHASE_COLUMNS",
+        "importPath": "core.utils.constants",
+        "description": "core.utils.constants",
+        "isExtraImport": true,
+        "detail": "core.utils.constants",
+        "documentation": {}
+    },
+    {
+        "label": "detect_separator",
+        "importPath": "core.utils.tools",
+        "description": "core.utils.tools",
+        "isExtraImport": true,
+        "detail": "core.utils.tools",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "TestClient",
+        "importPath": "fastapi.testclient",
+        "description": "fastapi.testclient",
+        "isExtraImport": true,
+        "detail": "fastapi.testclient",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "importPath": "core.database.init",
+        "description": "core.database.init",
+        "isExtraImport": true,
+        "detail": "core.database.init",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "importPath": "core.database.init",
+        "description": "core.database.init",
+        "isExtraImport": true,
+        "detail": "core.database.init",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "core.main",
+        "description": "core.main",
+        "isExtraImport": true,
+        "detail": "core.main",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "import_router",
+        "importPath": "core.routers.importdata",
+        "description": "core.routers.importdata",
+        "isExtraImport": true,
+        "detail": "core.routers.importdata",
+        "documentation": {}
+    },
+    {
+        "label": "setup_logging",
+        "importPath": "core.utils.conf_log",
+        "description": "core.utils.conf_log",
+        "isExtraImport": true,
+        "detail": "core.utils.conf_log",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "kind": 2,
+        "importPath": "core.database.init",
+        "description": "core.database.init",
+        "peekOfCode": "def init_db():\n    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Création table customers\n    cursor.execute(\"\"\"\n    CREATE TABLE IF NOT EXISTS customers (\n        customer_id INTEGER PRIMARY KEY,\n        title TEXT,\n        lastname TEXT,",
+        "detail": "core.database.init",
+        "documentation": {}
+    },
+    {
+        "label": "DB_PATH",
+        "kind": 5,
+        "importPath": "core.database.init",
+        "description": "core.database.init",
+        "peekOfCode": "DB_PATH = os.getenv(\"DATABASE_PATH\", \"./data/flight.db\")\ndef init_db():\n    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Création table customers\n    cursor.execute(\"\"\"\n    CREATE TABLE IF NOT EXISTS customers (\n        customer_id INTEGER PRIMARY KEY,\n        title TEXT,",
+        "detail": "core.database.init",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "core.routers.exportdata",
+        "description": "core.routers.exportdata",
+        "peekOfCode": "router = APIRouter()",
+        "detail": "core.routers.exportdata",
+        "documentation": {}
+    },
+    {
+        "label": "import_router",
+        "kind": 5,
+        "importPath": "core.routers.importdata",
+        "description": "core.routers.importdata",
+        "peekOfCode": "import_router = APIRouter()\n@import_router.post(\"/import-csv\", summary=\"Uploader deux fichiers CSV\", tags=[\"Import\"])\nasync def import_csv(\n    customers_file: UploadFile = File(..., description=\"CSV des customers\"),\n    purchases_file: UploadFile = File(..., description=\"CSV des purchases\"),\n):\n    try:\n        # Check extensions\n        for f in [customers_file, purchases_file]:\n            if not f.filename.endswith(\".csv\"):",
+        "detail": "core.routers.importdata",
+        "documentation": {}
+    },
+    {
+        "label": "setup_test_db",
+        "kind": 2,
+        "importPath": "core.tests.conftest",
+        "description": "core.tests.conftest",
+        "peekOfCode": "def setup_test_db():\n    init_db() \n@pytest.fixture\ndef client():\n    return TestClient(app)",
+        "detail": "core.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 2,
+        "importPath": "core.tests.conftest",
+        "description": "core.tests.conftest",
+        "peekOfCode": "def client():\n    return TestClient(app)",
+        "detail": "core.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "test_import_csv_success",
+        "kind": 2,
+        "importPath": "core.tests.test_import",
+        "description": "core.tests.test_import",
+        "peekOfCode": "def test_import_csv_success(client):\n    customers_csv = \"\"\"customer_id,title,lastname,firstname,postal_code,city,email\n1,2,Norris,Chuck,83600,Fréjus,chuck@norris.com\n2,1,Galante,Marie,75001,Paris,marie@galante.fr\n\"\"\"\n    purchases_csv = \"\"\"purchase_identifier,product_id,quantity,price,currency,date,customer_id\n1001,ABC123,2,19.99,EUR,2024-01-01,1\n1002,XYZ789,1,9.99,EUR,2024-01-02,2\n\"\"\"\n    response = client.post(",
+        "detail": "core.tests.test_import",
+        "documentation": {}
+    },
+    {
+        "label": "setup_logging",
+        "kind": 2,
+        "importPath": "core.utils.conf_log",
+        "description": "core.utils.conf_log",
+        "peekOfCode": "def setup_logging():\n    logging.basicConfig(\n        level=logging.INFO,\n        format=\"%(asctime)s | %(levelname)s | %(name)s | %(message)s\",\n        handlers=[\n            logging.StreamHandler(sys.stdout)\n        ]\n    )",
+        "detail": "core.utils.conf_log",
+        "documentation": {}
+    },
+    {
+        "label": "REQUIRED_CUSTOMER_COLUMNS",
+        "kind": 5,
+        "importPath": "core.utils.constants",
+        "description": "core.utils.constants",
+        "peekOfCode": "REQUIRED_CUSTOMER_COLUMNS = [\"customer_id\",\"title\",\"lastname\",\"firstname\",\"postal_code\",\"city\",\"email\"]\nREQUIRED_PURCHASE_COLUMNS = [\"purchase_identifier\", \"product_id\", \"quantity\", \"price\",\"currency\", \"date\",\"customer_id\"]",
+        "detail": "core.utils.constants",
+        "documentation": {}
+    },
+    {
+        "label": "REQUIRED_PURCHASE_COLUMNS",
+        "kind": 5,
+        "importPath": "core.utils.constants",
+        "description": "core.utils.constants",
+        "peekOfCode": "REQUIRED_PURCHASE_COLUMNS = [\"purchase_identifier\", \"product_id\", \"quantity\", \"price\",\"currency\", \"date\",\"customer_id\"]",
+        "detail": "core.utils.constants",
+        "documentation": {}
+    },
+    {
+        "label": "detect_separator",
+        "kind": 2,
+        "importPath": "core.utils.tools",
+        "description": "core.utils.tools",
+        "peekOfCode": "def detect_separator(upload_file: UploadFile) -> str:\n    \"\"\"Détecte si le CSV utilise ',' ou ';'r\"\"\"\n    first_line = upload_file.file.readline().decode(\"utf-8\")\n    upload_file.file.seek(0)\n    return \";\" if \";\" in first_line else \",\"\ndef fetch_data_from_sqlite(db_path: str):\n    conn = sqlite3.connect(db_path)\n    customers_df = pd.read_sql_query(\"SELECT * FROM customers\", conn)\n    purchases_df = pd.read_sql_query(\"SELECT * FROM purchases\", conn)\n    conn.close()",
+        "detail": "core.utils.tools",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_data_from_sqlite",
+        "kind": 2,
+        "importPath": "core.utils.tools",
+        "description": "core.utils.tools",
+        "peekOfCode": "def fetch_data_from_sqlite(db_path: str):\n    conn = sqlite3.connect(db_path)\n    customers_df = pd.read_sql_query(\"SELECT * FROM customers\", conn)\n    purchases_df = pd.read_sql_query(\"SELECT * FROM purchases\", conn)\n    conn.close()\n    return customers_df.to_dict(orient=\"records\"), purchases_df.to_dict(orient=\"records\")",
+        "detail": "core.utils.tools",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "core.main",
+        "description": "core.main",
+        "peekOfCode": "app = FastAPI(lifespan=lifespan)\napp.include_router(import_router)",
+        "detail": "core.main",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"../lib/python3.11/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": "venv.bin.activate_this",
+        "description": "venv.bin.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": "venv.bin.activate_this",
+        "documentation": {}
+    }
+]
