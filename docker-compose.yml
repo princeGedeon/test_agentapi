@@ -11,13 +11,13 @@ services:
     environment:
       - DATABASE_URL=/app/data/flight.db
       - OLLAMA_BASE_URL=http://ollama:11434
-      - OLLAMA_MODEL=phi3
+      - OLLAMA_MODEL=Mistral
     depends_on:
       - ollama
           
 
   ollama:
-    image: ollama/ollama:0.5.7
+    image: ollama/ollama
     container_name: ollama
     volumes:
       - ollama:/root/.ollama
@@ -25,7 +25,7 @@ services:
     ports:
       - "11434:11434"
     environment:
-      - LLM_MODEL_VERSION=phi3
+      - LLM_MODEL_VERSION=Mistral
     entrypoint: [ "/bin/bash", "/ollama_entrypoint.sh" ]
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://localhost:11434 || exit 1" ]

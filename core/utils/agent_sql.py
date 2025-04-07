@@ -7,7 +7,7 @@ from langchain_ollama import OllamaLLM
 def load_database():
     db_path = os.getenv("DATABASE_PATH", "./data/flight.db")
     db = SQLDatabase.from_uri(f"sqlite:///{db_path}")
-    print("✅ Base chargée :", db.dialect)
+    print("Base chargée :", db.dialect)
     return db
 
 def load_llm():
