@@ -111,7 +111,7 @@ Dans le module des fonctions utiles, j’ai prévu la possibilité de changer fa
 
   - database/ : Scripts liés à l’initialisation de la base de données
 
-  - routers/ : Regroupe les routes par fonctionnalités (import, export, llm_query, etc.)
+  - routers/ : Regroupe les routes par fonctionnalités (import, export, llm_query)
 
   - tests/ : Tests unitaires et fonctionnels basés sur pytest
 
