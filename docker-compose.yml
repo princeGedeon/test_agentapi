@@ -39,7 +39,7 @@ services:
       - "11434:11434"
     environment:
       - LLM_MODEL_VERSION=mistral
-    entrypoint: [ "/bin/bash", "/ollama_entrypoint.sh" ]
+    entrypoint: [ "bash", "-c", "tr -d '\\r' < /ollama_entrypoint.sh > /tmp/script && bash /tmp/script" ]
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://localhost:11434 || exit 1" ]
       interval: 30s

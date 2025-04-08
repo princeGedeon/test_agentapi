@@ -127,4 +127,4 @@ Le modèle peut prendre du temps à se charger au premier démarrage. Il faut at
 
 ## Auteur
 
-Par **Prince Gédéon GUEDJE****
+Par **Prince Gédéon GUEDJE**
