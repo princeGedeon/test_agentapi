@@ -8,10 +8,10 @@ until ollama list > /dev/null 2>&1; do
 done
 MODEL_NAME=${LLM_MODEL_VERSION}
 if ollama list | grep -q "$MODEL_NAME"; then
-  echo "Model $MODEL_NAME already available."
+  echo "Model $MODEL_NAME  available."
 else
   echo "Retrieving model: $MODEL_NAME"
   ollama pull "$MODEL_NAME"
-  echo "Model $MODEL_NAME is ready!"
+  echo "Model $MODEL_NAME is loading"
 fi
 wait $pid

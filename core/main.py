@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
     setup_logging()
     logging.info("Initialisation DB")
     init_db()
-    logging.info("Initialisation Modèle phi")
+    logging.info("Initialisation Modèle ")
     yield
     logging.info("Fermeture")
 

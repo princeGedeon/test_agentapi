@@ -22,7 +22,7 @@ def load_llm():
         base_url=base_url,
         temperature=0.1,
     )
-    llm=OpenAI(api_key="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")
+    #llm=OpenAI(api_key="..........................")
 
 
     print(f"Modèle chargé : {model_name} avec Ollama")

@@ -44,6 +44,9 @@ async def import_csv(
         # Idem pour purchases
         existing_purchase_ids = pd.read_sql_query("SELECT purchase_identifier FROM purchases", conn)["purchase_identifier"].tolist()
         new_purchases_df = purchases_df[~purchases_df["purchase_identifier"].isin(existing_purchase_ids)]
+       # enelver les elements qui ont plus de 4 valeurs manquantes
+        new_purchases_df = new_purchases_df.dropna(thresh=new_purchases_df.shape[1] - 4)
+        new_customers_df = new_customers_df.dropna(thresh=new_customers_df.shape[1] - 4)
         # import avec pandas
         new_customers_df.to_sql("customers", conn, if_exists="append", index=False)
         new_purchases_df.to_sql("purchases", conn, if_exists="append", index=False)

@@ -5,10 +5,16 @@ from fastapi import UploadFile
 
 
 def detect_separator(upload_file: UploadFile) -> str:
-    """Détecte si le CSV utilise ',' ou ';'r"""
+    """Détecte si le CSV utilise ',' ou ';'"""
     first_line = upload_file.file.readline().decode("utf-8")
     upload_file.file.seek(0)
-    return ";" if ";" in first_line else ","
+
+    if ";" in first_line:
+        return ";"
+    elif "," in first_line:
+        return ","
+    else:
+        return "|"
 
 def fetch_data_from_sqlite(db_path: str):
     conn = sqlite3.connect(db_path)
