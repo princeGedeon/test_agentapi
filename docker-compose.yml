@@ -11,7 +11,7 @@ services:
     environment:
       - DATABASE_URL=/app/data/flight.db
       - OLLAMA_BASE_URL=http://ollama:11434
-      - OLLAMA_MODEL=qwen2.5-coder:3b
+      - OLLAMA_MODEL=mistral
       - EXTERNAL_API_URL=http://external_api:8081/customers
     depends_on:
       - ollama
@@ -38,7 +38,7 @@ services:
     ports:
       - "11434:11434"
     environment:
-      - LLM_MODEL_VERSION=qwen2.5-coder:3b
+      - LLM_MODEL_VERSION=mistral
     entrypoint: [ "/bin/bash", "/ollama_entrypoint.sh" ]
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://localhost:11434 || exit 1" ]

@@ -56,7 +56,9 @@ curl -X POST http://localhost:8000/query-sql \
   -H "Content-Type: application/json" \
   -d '{"question": "Combien y a-t-il de customers ?"}'
 ```
-- Modèle sélectionné : qwen2.5-coder:3b
+- Modèle sélectionné : Mistral
+
+- Nous avons également tester MathiasB/llama3fr (llama fr) ,phi3 et qwen2.5-coder:3b
 Il suffit de modifier le modèle dans la variables d'environnements du dockercompose.
 - Etant donné un environnement CPU, la requête prends plus de temps.Mais en surveillant 
 les logs on peut suivre son évolution.
@@ -114,7 +116,7 @@ Dans le module des fonctions utiles, j’ai prévu la possibilité de changer fa
 
   - utils/ : Fonctions utilitaires, notamment l’agent text-to-SQL (Langchain + Ollama)
 
-- **externalapi**/ : Mini API externe simulant un endpoint qui consomme un JSON (mock ou prod)
+- **externalapi**/ :  API externe simulant un endpoint qui consomme un JSON 
 
 - **ollama_server/** : Configuration pour lancer Ollama + script d’autoload du modèle
 
