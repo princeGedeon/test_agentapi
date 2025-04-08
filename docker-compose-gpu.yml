@@ -44,7 +44,7 @@ services:
       - LLM_MODEL_VERSION=mistral
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
-    entrypoint: [ "/bin/bash", "/ollama_entrypoint.sh" ]
+    entrypoint: [ "bash", "-c", "tr -d '\\r' < /ollama_entrypoint.sh > /tmp/script && bash /tmp/script" ]
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://localhost:11434 || exit 1" ]
       interval: 30s
