@@ -86,10 +86,10 @@ sudo docker compose run --rm tests
 
 ## Fonctionnement Challenges
 - **Upload  CSV**
-J’ai développé une fonctionnalité d’import de fichiers CSV avec détection automatique du séparateur (; ou ,). Une fonction dédiée ajuste automatiquement la lecture selon le bon séparateur, ce qui permet de rendre l’upload plus robuste et user-friendly.
+J’ai développé une fonctionnalité d’import de fichiers CSV avec détection automatique du séparateur (; ou ,). 
 
 - **Base de données séparée pour les tests et la production**
-Pour éviter toute collision entre les environnements de test et de production, j’ai mis en place une variable d’environnement DATABASE_PATH. Elle permet de cibler dynamiquement la bonne base de données selon le contexte. Un service Docker dédié aux tests a également été ajouté dans le docker-compose.
+Pour éviter tout conflit entre les environnements de test et de production, j’ai mis en place une variable d’environnement DATABASE_PATH. Elle permet de cibler dynamiquement la bonne base de données selon le contexte. Un service Docker dédié aux tests a également été ajouté dans le docker-compose.
 
 - **Service de modèle LLM via Ollama**
 Le modèle est isolé dans un service Docker ollama. Ce service peut  être facilement déployé sur le cloud (ex : AWS Bedrock), et communique avec notre backend via une URL configurable (OLLAMA_BASE_URL).
@@ -104,6 +104,7 @@ J’ai intégré la librairie tenacity pour gérer automatiquement les erreurs d
 Dans le module des fonctions utiles, j’ai prévu la possibilité de changer facilement de modèle LLM (OpenAI, Mistral, etc.) afin d’adapter le système selon les besoins : vitesse, coût, qualité, ou fournisseur cloud.
 
 - Pull automatique du modèle à l'initialisation ollama
+- J'ai également fixé un bugs de mon entrypoint ollama qui sur windows ne fonctionnait pas à cause de \r
 
 ## Architecture
 - **core/** : L’API principale FastAPI
