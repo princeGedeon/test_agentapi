@@ -68,13 +68,7 @@ Les tests se trouvent dans le dossier `tests/`.
 Pour les lancer :
 
 ```bash
-pytest
-```
-
-ou, pour voir les détails :
-
-```bash
-pytest -v
+docker-compose run --rm tests
 ```
 
 ---

@@ -5,16 +5,29 @@ services:
     build: ./core
     command: uvicorn core.main:app --host 0.0.0.0 --port 8000
     volumes:
-      - ./data:/app/data
+      - data:/app/data
     ports:
       - "8000:8000"
     environment:
       - DATABASE_URL=/app/data/flight.db
       - OLLAMA_BASE_URL=http://ollama:11434
-      - OLLAMA_MODEL=Mistral
+      - OLLAMA_MODEL=sam860/phi4-mini:3.8b
+      - EXTERNAL_API_URL=http://external_api:8081/customers
     depends_on:
       - ollama
-          
+      - external_api
+
+
+  tests:
+    build: ./core
+    command: pytest -v
+    volumes:
+      - data:/app/data
+    environment:
+      - DATABASE_PATH=/app/data/flight_test.db
+    depends_on:
+      - app
+
 
   ollama:
     image: ollama/ollama
@@ -25,7 +38,7 @@ services:
     ports:
       - "11434:11434"
     environment:
-      - LLM_MODEL_VERSION=Mistral
+      - LLM_MODEL_VERSION=sam860/phi4-mini:3.8b
     entrypoint: [ "/bin/bash", "/ollama_entrypoint.sh" ]
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://localhost:11434 || exit 1" ]
@@ -33,7 +46,11 @@ services:
       timeout: 10s
       retries: 5
 
-
+  external_api:
+    build: ./externalapi
+    ports:
+      - "8081:8081"
       
 volumes:
   ollama:
+  data:

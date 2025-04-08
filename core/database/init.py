@@ -5,7 +5,8 @@ import os
 
 DB_PATH = os.getenv("DATABASE_PATH", "./data/flight.db")
 
-def init_db():
+def init_db(mode="prod"):
+
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
@@ -22,8 +23,6 @@ def init_db():
         email TEXT
     )
     """)
-
-    # Création table purchases
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS purchases (
         purchase_identifier TEXT PRIMARY KEY,
@@ -36,6 +35,5 @@ def init_db():
         FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
     )
     """)
-
     conn.commit()
     conn.close()

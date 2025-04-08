@@ -29,8 +29,6 @@ async def import_csv(
         # Load csv avec pandas
         customers_df = pd.read_csv(customers_file.file,sep=sep_customers)
         purchases_df = pd.read_csv(purchases_file.file,sep=sep_purchases   )
-        print(customers_df.head())
-        print(purchases_df.head())
 
         # Vérifications
         missing_customers = [col for col in REQUIRED_CUSTOMER_COLUMNS if col not in customers_df.columns]
@@ -40,23 +38,27 @@ async def import_csv(
             raise HTTPException(status_code=400, detail=f"Colonnes manquantes dans customers.csv : {missing_customers}")
         if missing_purchases:
             raise HTTPException(status_code=400, detail=f"Colonnes manquantes dans purchases.csv : {missing_purchases}")
-
-        # 💾 Importer dans la DB (append)
-        customers_df.to_sql("customers", conn, if_exists="append", index=False)
-        purchases_df.to_sql("purchases", conn, if_exists="append", index=False)
-
-        nb_customers = len(customers_df)
-        nb_purchases = len(purchases_df)
-
+        # Filtrer les doublons d'ID déjà dans customers
+        existing_customer_ids = pd.read_sql_query("SELECT customer_id FROM customers", conn)["customer_id"].tolist()
+        new_customers_df = customers_df[~customers_df["customer_id"].isin(existing_customer_ids)]
+        # Idem pour purchases
+        existing_purchase_ids = pd.read_sql_query("SELECT purchase_identifier FROM purchases", conn)["purchase_identifier"].tolist()
+        new_purchases_df = purchases_df[~purchases_df["purchase_identifier"].isin(existing_purchase_ids)]
+        # import avec pandas
+        new_customers_df.to_sql("customers", conn, if_exists="append", index=False)
+        new_purchases_df.to_sql("purchases", conn, if_exists="append", index=False)
         conn.commit()
         conn.close()
-
         return {
-           "rows_inserted": {
-                "customers": nb_customers,
-                "purchases": nb_purchases
+                "rows_inserted": {
+                    "customers": len(new_customers_df),
+                    "purchases": len(new_purchases_df)
+                },
+                "rows_ignored": {
+                    "customers": len(customers_df) - len(new_customers_df),
+                    "purchases": len(purchases_df) - len(new_purchases_df)
+                }
             }
-        }
 
     except pd.errors.ParserError:
         raise HTTPException(status_code=400, detail="Erreur de parsing CSV. Vérifie le format des fichiers.")

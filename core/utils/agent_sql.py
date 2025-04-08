@@ -4,6 +4,8 @@ from langchain_community.agent_toolkits import create_sql_agent
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain.agents import AgentType
 from langchain_ollama import OllamaLLM
+from langchain_openai import OpenAI
+
 
 def load_database():
     db_path = os.getenv("DATABASE_PATH", "./data/flight.db")
@@ -20,6 +22,7 @@ def load_llm():
         base_url=base_url,
         temperature=0.1,
     )
+    llm=OpenAI(api_key="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")
 
 
     print(f"Modèle chargé : {model_name} avec Ollama")
