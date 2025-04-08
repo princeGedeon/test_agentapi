@@ -1,4 +1,4 @@
-# 🧠 test_agentapi
+#  test_agentapi
 
 ### Fonctionnalités :
 - Importe des fichiers CSV clients et achats dans une base SQLite
@@ -9,7 +9,6 @@
 
 ## Installation 
 
-### 🖥️ Installation locale
 
 ###  Avec Docker
 ```bash
@@ -21,9 +20,9 @@ Vous pouvez suivre la console pour voir les logs d'execution
 - Documentation :  `http://localhost:8000/docs`
 ---
 
-## 📬 Endpoints & Exemples `curl`
+##  Endpoints & Exemples `curl`
 
-### 📥 `POST /import-csv`
+###  `POST /import-csv`
 Upload de deux fichiers CSV : `customers` et `purchases`.
 ```bash
 curl -X POST http://localhost:8000/import-csv \
@@ -34,7 +33,7 @@ Nous ignorons à chaque enregistrement les lignes dont l'id est existantes ainsi
 
 ---
 
-### 📤`POST /send-customers`
+### `POST /send-customers`
 
 Envoie les données en base vers une API externe 
 Par défaut nous avons developper une api qui recupère les données json
@@ -50,14 +49,14 @@ une simulation
 
 ---
 
-### 🤖 `POST /query-sql`
+###  `POST /query-sql`
 Interroge les données à partir du texte (avec un agent LLM connecté à la DB) :
 ```bash
 curl -X POST http://localhost:8000/query-sql \
   -H "Content-Type: application/json" \
   -d '{"question": "Combien y a-t-il de customers ?"}'
 ```
-- Modèle sélectionné : Zephyr
+- Modèle sélectionné : qwen2.5-coder:3b
 Il suffit de modifier le modèle dans la variables d'environnements du dockercompose.
 - Etant donné un environnement CPU, la requête prends plus de temps.Mais en surveillant 
 les logs on peut suivre son évolution.
@@ -69,7 +68,7 @@ Les tests se trouvent dans le dossier `tests/`.
 Pour les lancer :
 
 ```bash
-docker-compose run --rm tests
+sudo docker compose run --rm tests
 ```
 
 ---
@@ -102,6 +101,28 @@ J’ai intégré la librairie tenacity pour gérer automatiquement les erreurs d
 - **agents LLM** Text to SQL
 Dans le module des fonctions utiles, j’ai prévu la possibilité de changer facilement de modèle LLM (OpenAI, Mistral, etc.) afin d’adapter le système selon les besoins : vitesse, coût, qualité, ou fournisseur cloud.
 
+- Pull automatique du modèle à l'initialisation ollama
+
+## Architecture
+- **core/** : L’API principale FastAPI
+
+  - database/ : Scripts liés à l’initialisation de la base de données
+
+  - routers/ : Regroupe les routes par fonctionnalités (import, export, llm_query, etc.)
+
+  - tests/ : Tests unitaires et fonctionnels basés sur pytest
+
+  - utils/ : Fonctions utilitaires, notamment l’agent text-to-SQL (Langchain + Ollama)
+
+- **externalapi**/ : Mini API externe simulant un endpoint qui consomme un JSON (mock ou prod)
+
+- **ollama_server/** : Configuration pour lancer Ollama + script d’autoload du modèle
+
+Le modèle peut prendre du temps à se charger au premier démarrage. Il faut attendre qu’il soit prêt avant de le solliciter.
+
+- **docker-compose.yml** : Point d’entrée du projet — orchestre tous les services (API, tests, Ollama, externalapi.)
+
+
 ## Auteur
 
-Par **Prince Gédéon GUEDJE**
+Par **Prince Gédéon GUEDJE****
